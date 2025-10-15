@@ -3,11 +3,11 @@ import { useState } from "react";
 import { loginWithEmailAndPassword } from "../store/thunks/loginAuth";
 import { loginWithGoogle } from "../store/thunks/loginGoogle";
 import { logoutAuth } from "../store/thunks/logoutAuth";
-import { Link, useNavigate } from "react-router-dom"; // ✅ useNavigate agregado
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate(); // ✅ hook para cambiar de ruta
+  const navigate = useNavigate(); 
 
   const { status, displayName } = useSelector((state) => state.auth);
 
