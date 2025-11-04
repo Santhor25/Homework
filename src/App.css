@@ -1,0 +1,54 @@
+.app-container {
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+}
+
+.tree-input {
+  padding: 8px;
+  margin: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+.search-container {
+  margin-top: 15px;
+}
+
+.results-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 20px auto;
+  width: 60%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.results-container h2 {
+  margin-bottom: 10px;
+}
+
+.results-container p {
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+.empty-tree {
+  color: gray;
+  margin-top: 20px;
+}
+
+#treeWrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+#treeWrapper::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 4px;
+}
+
+#treeWrapper::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
