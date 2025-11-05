@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 
-// Importar páginas
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Settings from "./pages/Settings";
