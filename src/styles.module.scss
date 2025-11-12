@@ -1,0 +1,131 @@
+@use "sass:color";
+
+$primary-color: #007bff;
+$primary-hover: color.scale($primary-color, $lightness: 15%);
+$background: #f9f9f9;
+$shadow-light: 0 2px 5px rgba(0,0,0,0.1);
+$shadow-hover: 0 5px 15px rgba(0,0,0,0.2);
+$shadow-button: 0 4px 10px rgba(0,123,255,0.4);
+$border-radius: 8px;
+$transition-speed: 0.6s;
+
+
+@mixin transition($props...) {
+  transition: $props;
+}
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+%card-style {
+  background-color: $background;
+  border-radius: $border-radius;
+  box-shadow: $shadow-light;
+  text-align: center;
+  padding: 20px;
+  max-width: 500px;
+  @include transition(transform $transition-speed ease, box-shadow $transition-speed ease);
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+  100% { transform: translateY(0); }
+}
+
+body {
+  @include flex-center(column);
+  height: 100vh;
+  margin: 0;
+  background-color: color.scale($background, $lightness: 5%);
+}
+
+.div {
+  @extend %card-style;
+  transform: translateY(0);
+
+  &:hover {
+    animation: float 3s ease-in-out infinite;
+    box-shadow: $shadow-hover;
+  }
+
+  h2 {
+    color: color.scale($primary-color, $lightness: -20%);
+    margin-bottom: 16px;
+    font-size: 1.8rem;
+  }
+
+  form {
+    @include flex-center(column);
+    gap: 10px;
+
+    input {
+      padding: 8px;
+      border: 1px solid color.scale($primary-color, $lightness: 40%);
+      border-radius: 4px;
+      width: 90%;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+      }
+    }
+
+    button {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      @include transition(background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease);
+
+      &:hover {
+        background-color: $primary-hover;
+        transform: translateY(-2px);
+        box-shadow: $shadow-button;
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0,123,255,0.3);
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 16px;
+
+    li {
+      margin: 6px 0;
+      padding: 6px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+  }
+}
+
+$button-colors: (primary: $primary-color, secondary: #28a745, danger: #dc3545);
+
+@each $name, $color in $button-colors {
+  .btn-#{$name} {
+    background-color: $color;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    @include transition(background-color 0.3s ease);
+
+    &:hover {
+      background-color: color.scale($color, $lightness: 10%);
+    }
+  }
+}
